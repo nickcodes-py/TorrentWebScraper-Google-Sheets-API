@@ -8,6 +8,7 @@ import requests
 # Google Sheets API
 ##################################
 
+
 scope = ['https://spreadsheets.google.com/feeds',
          'https://www.googleapis.com/auth/drive']
 
@@ -16,15 +17,12 @@ gc = gspread.authorize(credentials)
 wks = gc.open("PythonProjectSheet")
 worksheet = wks.worksheet('A worksheet')
 list_of_lists = worksheet.get_all_values()
-#Print out spreadsheet
-def AllValues():
-    for x in list_of_lists:
-        print(x)
 
 
 ##################################
 # Web Scraper
 ##################################
+
 
 #Replace this with appropriate category to scrap (Movies : 201 , Games : 400, Gucci : 500 )
 
@@ -35,6 +33,7 @@ tags = soup.find('table', {'id': 'searchResult'})
 
 downlinks = []     #List for all download links
 filetitles = []    #List for all names of file
+
 # For extracting the Magnet Links
 for magnetlinks in tags.find_all('a', {'title': 'Download this torrent using magnet'}):
     downlinks.append(magnetlinks.get('href'))
